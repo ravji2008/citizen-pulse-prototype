@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CitizenPulse — AI for Digital Public Infrastructure</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🏛️ CitizenPulse</h1>
+    <p id="tagline">AI-powered citizen feedback aggregation for Digital Public Infrastructure planning</p>
+    <div class="lang-toggle">
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('hi')">हिंदी</button>
+    </div>
+  </header>
+
+  <nav>
+    <button class="tab-btn active" id="tab-submit-btn" onclick="showTab('submit')"></button>
+    <button class="tab-btn" id="tab-dashboard-btn" onclick="showTab('dashboard')"></button>
+  </nav>
+
+  <main>
+    <section id="submit-tab">
+      <form id="feedback-form">
+        <label id="label-state"></label>
+        <select id="state-select"></select>
+
+        <label id="label-district"></label>
+        <input type="text" id="district-input">
+
+        <label id="label-text"></label>
+        <textarea id="text-input" rows="4"></textarea>
+
+        <div class="voice-controls">
+          <select id="voice-lang">
+            <option value="en-IN">English (India)</option>
+            <option value="hi-IN">हिन्दी</option>
+            <option value="bn-IN">বাংলা</option>
+            <option value="ta-IN">தமிழ்</option>
+            <option value="te-IN">తెలుగు</option>
+            <option value="mr-IN">मराठी</option>
+            <option value="gu-IN">ગુજરાતી</option>
+          </select>
+          <button type="button" id="voice-btn">🎙️ <span id="voice-btn-label"></span></button>
+        </div>
+
+        <button type="submit" id="submit-btn"></button>
+      </form>
+      <div id="result-box"></div>
+    </section>
+
+    <section id="dashboard-tab" style="display:none;">
+      <canvas id="categoryChart" height="90"></canvas>
+      <h3 id="hotspots-heading"></h3>
+      <div class="table-wrap">
+        <table id="hotspots-table">
+          <thead>
+            <tr>
+              <th id="th-state"></th>
+              <th id="th-category"></th>
+              <th id="th-count"></th>
+              <th id="th-urgency"></th>
+              <th id="th-infra"></th>
+              <th id="th-priority"></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Prototype built for Google "Build with AI: Code for Communities" — Track 1, AI for Digital Public Infrastructure &amp; Governance.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
